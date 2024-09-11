@@ -1,5 +1,6 @@
 using GlassCutting.Application.Extensions;
 using GlassCutting.Infrastructure.Extensions;
+using GlassCuttingOptimizer.ServiceDefaults;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,7 +33,5 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-
-app.MapDefaultEndpoints();
 
 app.Run();

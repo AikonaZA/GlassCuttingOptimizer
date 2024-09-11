@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GlassCutting.Core.DTOs;
+﻿namespace GlassCutting.Core.DTOs;
 
 public class OptimizationResultDTO
 {

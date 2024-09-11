@@ -5,30 +5,19 @@ namespace GlassCutting.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class StockSheetController : ControllerBase
+public class StockSheetController(IStockSheetRepository stockSheetRepository) : ControllerBase
 {
-    private readonly IStockSheetRepository _stockSheetRepository;
-
-    public StockSheetController(IStockSheetRepository stockSheetRepository)
-    {
-        _stockSheetRepository = stockSheetRepository;
-    }
-
     [HttpGet]
     public IActionResult GetAllStockSheets()
     {
-        var stockSheets = _stockSheetRepository.GetAllStockSheets();
+        var stockSheets = stockSheetRepository.GetAllStockSheets();
         return Ok(stockSheets);
     }
 
     [HttpGet("{id}")]
     public IActionResult GetStockSheetById(int id)
     {
-        var stockSheet = _stockSheetRepository.GetStockSheetById(id);
-        if (stockSheet == null)
-        {
-            return NotFound();
-        }
-        return Ok(stockSheet);
+        var stockSheet = stockSheetRepository.GetStockSheetById(id);
+        return stockSheet == null ? NotFound() : Ok(stockSheet);
     }
 }

@@ -1,24 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using GlassCutting.Core.Entities;
+﻿using GlassCutting.Core.Entities;
 using GlassCutting.Core.Interfaces;
 
 namespace GlassCutting.Application.Services;
-// CuttingOptimizerService.cs
-public class CuttingOptimizerService : ICuttingOptimizer
+
+public class CuttingOptimizerService(IStockSheetRepository stockSheetRepository, IGlassPanelRepository glassPanelRepository) : ICuttingOptimizer
 {
-    private readonly IStockSheetRepository _stockSheetRepository;
-    private readonly IGlassPanelRepository _glassPanelRepository;
-
-    public CuttingOptimizerService(IStockSheetRepository stockSheetRepository, IGlassPanelRepository glassPanelRepository)
-    {
-        _stockSheetRepository = stockSheetRepository;
-        _glassPanelRepository = glassPanelRepository;
-    }
-
     public CutLayout Optimize(IEnumerable<GlassPanel> panels, IEnumerable<StockSheet> sheets)
     {
         // Basic Greedy Algorithm: Sort panels and attempt to place them on the smallest available space
@@ -54,12 +40,12 @@ public class CuttingOptimizerService : ICuttingOptimizer
         return layout;
     }
 
-    private double CalculateWaste(IEnumerable<StockSheet> sheets, List<CutPosition> positions)
+    private static double CalculateWaste(IEnumerable<StockSheet> sheets, List<CutPosition> positions)
     {
         // Logic to calculate total waste based on placed panels and total available sheet area
         double totalArea = sheets.Sum(s => s.Width * s.Height);
         double usedArea = positions.Sum(p => p.Width * p.Height);
-        return ((totalArea - usedArea) / totalArea) * 100;
+        return (totalArea - usedArea) / totalArea * 100;
     }
 }
 

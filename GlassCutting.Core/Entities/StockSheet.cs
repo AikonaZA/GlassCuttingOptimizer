@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GlassCutting.Core.Entities;
+﻿namespace GlassCutting.Core.Entities;
 public class StockSheet
 {
     public int Id { get; set; }

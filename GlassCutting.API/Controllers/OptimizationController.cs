@@ -5,34 +5,16 @@ namespace GlassCutting.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class OptimizationController : ControllerBase
+public class OptimizationController(ICuttingOptimizer cuttingOptimizer, IStockSheetRepository stockSheetRepository, IGlassPanelRepository glassPanelRepository) : ControllerBase
 {
-    private readonly ICuttingOptimizer _cuttingOptimizer;
-    private readonly IStockSheetRepository _stockSheetRepository;
-    private readonly IGlassPanelRepository _glassPanelRepository;
-
-    public OptimizationController(ICuttingOptimizer cuttingOptimizer,
-                                  IStockSheetRepository stockSheetRepository,
-                                  IGlassPanelRepository glassPanelRepository)
-    {
-        _cuttingOptimizer = cuttingOptimizer;
-        _stockSheetRepository = stockSheetRepository;
-        _glassPanelRepository = glassPanelRepository;
-    }
-
     [HttpPost("optimize")]
     public IActionResult OptimizeCutting()
     {
-        var stockSheets = _stockSheetRepository.GetAllStockSheets();
-        var glassPanels = _glassPanelRepository.GetAllGlassPanels();
+        var stockSheets = stockSheetRepository.GetAllStockSheets();
+        var glassPanels = glassPanelRepository.GetAllGlassPanels();
 
-        var result = _cuttingOptimizer.Optimize(glassPanels, stockSheets);
+        var result = cuttingOptimizer.Optimize(glassPanels, stockSheets);
 
-        if (result == null)
-        {
-            return BadRequest("Optimization failed.");
-        }
-
-        return Ok(result);
+        return result == null ? BadRequest("Optimization failed.") : Ok(result);
     }
 }
