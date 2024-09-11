@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsAspireHost>true</IsAspireHost>
+    <UserSecretsId>5f1e3e47-9602-4bb6-9e67-b47d57b6d25c</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GlassCutting.API\GlassCutting.API.csproj" />
+    <ProjectReference Include="..\GlassCuttingOptimizer.ApiService\GlassCuttingOptimizer.ApiService.csproj" />
+    <ProjectReference Include="..\GlassCuttingOptimizer.Web\GlassCuttingOptimizer.Web.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspire.Hosting.AppHost" Version="8.2.0" />
+  </ItemGroup>
+
+</Project>
