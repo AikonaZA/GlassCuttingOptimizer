@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\GlassCutting.Core\GlassCutting.Core.csproj" />
     <ProjectReference Include="..\GlassCuttingOptimizer.ServiceDefaults\GlassCuttingOptimizer.ServiceDefaults.csproj" />
   </ItemGroup>
 

@@ -1,10 +1,13 @@
 using GlassCuttingOptimizer.Web;
 using GlassCuttingOptimizer.Web.Components;
+using GlassCuttingOptimizer.Web.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add service defaults & Aspire components.
 builder.AddServiceDefaults();
+builder.Services.AddScoped<ApiService>(); // Register the API service
+
 
 // Add services to the container.
 builder.Services.AddRazorComponents()

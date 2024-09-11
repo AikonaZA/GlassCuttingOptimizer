@@ -1,8 +1,14 @@
+using GlassCutting.Application.Extensions;
+using GlassCutting.Infrastructure.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
 
 // Add services to the container.
+builder.Services.AddApplicationLayer();
+builder.Services.AddInfrastructureLayer("Data Source=glasscutting.db");
+
 builder.Services.AddProblemDetails();
 
 builder.Services.AddControllers();

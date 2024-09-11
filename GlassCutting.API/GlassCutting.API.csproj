@@ -11,6 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\GlassCutting.Application\GlassCutting.Application.csproj" />
+    <ProjectReference Include="..\GlassCutting.Infrastructure\GlassCutting.Infrastructure.csproj" />
     <ProjectReference Include="..\GlassCuttingOptimizer.ServiceDefaults\GlassCuttingOptimizer.ServiceDefaults.csproj" />
   </ItemGroup>
 
