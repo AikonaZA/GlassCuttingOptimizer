@@ -21,4 +21,3 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
             .HasForeignKey(p => p.CutLayoutId);
     }
 }
-

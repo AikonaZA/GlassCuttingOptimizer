@@ -24,7 +24,6 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IStockSheetService, StockSheetService>();
         services.AddScoped<IGlassPanelService, GlassPanelService>();
 
-
         return services;
     }
 }

@@ -6,4 +6,3 @@ public class OptimizationResultDTO
     public List<CutPositionDTO> CutPositions { get; set; }
     public double WastePercentage { get; set; }
 }
-
