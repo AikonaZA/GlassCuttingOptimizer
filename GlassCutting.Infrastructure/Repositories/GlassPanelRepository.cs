@@ -1,17 +1,25 @@
 ﻿using GlassCutting.Core.Entities;
 using GlassCutting.Core.Interfaces;
 using GlassCutting.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace GlassCutting.Infrastructure.Repositories;
+
 public class GlassPanelRepository(ApplicationDbContext context) : IGlassPanelRepository
 {
-    public IEnumerable<GlassPanel> GetAllGlassPanels()
+    public async Task<IEnumerable<GlassPanel>> GetAllGlassPanelsAsync()
     {
-        return [.. context.GlassPanels];
+        return await context.GlassPanels.ToListAsync();
     }
 
-    public GlassPanel GetGlassPanelById(int id)
+    public async Task<GlassPanel> GetGlassPanelByIdAsync(int id)
     {
-        return context.GlassPanels.Find(id);
+        return await context.GlassPanels.FindAsync(id);
+    }
+
+    public async Task AddGlassPanelAsync(GlassPanel glassPanel)
+    {
+        await context.GlassPanels.AddAsync(glassPanel);
+        await context.SaveChangesAsync();
     }
 }

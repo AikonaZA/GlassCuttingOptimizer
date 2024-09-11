@@ -1,17 +1,25 @@
 ﻿using GlassCutting.Core.Entities;
 using GlassCutting.Core.Interfaces;
 using GlassCutting.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace GlassCutting.Infrastructure.Repositories;
+
 public class StockSheetRepository(ApplicationDbContext context) : IStockSheetRepository
 {
-    public IEnumerable<StockSheet> GetAllStockSheets()
+    public async Task<IEnumerable<StockSheet>> GetAllStockSheetsAsync()
     {
-        return [.. context.StockSheets];
+        return await context.StockSheets.ToListAsync();
     }
 
-    public StockSheet GetStockSheetById(int id)
+    public async Task<StockSheet> GetStockSheetByIdAsync(int id)
     {
-        return context.StockSheets.Find(id);
+        return await context.StockSheets.FindAsync(id);
+    }
+
+    public async Task AddStockSheetAsync(StockSheet stockSheet)
+    {
+        await context.StockSheets.AddAsync(stockSheet);
+        await context.SaveChangesAsync();
     }
 }

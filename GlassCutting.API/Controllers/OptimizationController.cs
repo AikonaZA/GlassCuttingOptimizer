@@ -1,4 +1,5 @@
-﻿using GlassCutting.Core.Interfaces;
+﻿using GlassCutting.Core.Entities;
+using GlassCutting.Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GlassCutting.API.Controllers;
@@ -10,8 +11,8 @@ public class OptimizationController(ICuttingOptimizer cuttingOptimizer, IStockSh
     [HttpPost("optimize")]
     public IActionResult OptimizeCutting()
     {
-        var stockSheets = stockSheetRepository.GetAllStockSheets();
-        var glassPanels = glassPanelRepository.GetAllGlassPanels();
+        var stockSheets = (IEnumerable<StockSheet>)stockSheetRepository.GetAllStockSheetsAsync();
+        var glassPanels = (IEnumerable<GlassPanel>)glassPanelRepository.GetAllGlassPanelsAsync();
 
         var result = cuttingOptimizer.Optimize(glassPanels, stockSheets);
 

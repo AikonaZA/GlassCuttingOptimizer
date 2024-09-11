@@ -7,8 +7,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.AddServiceDefaults();
 
 // Add services to the container.
+// Get the connection string from configuration
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
 builder.Services.AddApplicationLayer();
-builder.Services.AddInfrastructureLayer("Data Source=glasscutting.db");
+builder.Services.AddInfrastructureLayer(connectionString);
 
 builder.Services.AddProblemDetails();
 

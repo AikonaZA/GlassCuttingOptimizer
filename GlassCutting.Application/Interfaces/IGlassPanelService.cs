@@ -1,10 +1,10 @@
 ﻿using GlassCutting.Core.Entities;
 
-namespace GlassCutting.Core.Interfaces;
+namespace GlassCutting.Application.Interfaces;
 
-public interface IGlassPanelRepository
+public interface IGlassPanelService
 {
-    Task AddGlassPanelAsync(GlassPanel glassPanel);
     Task<IEnumerable<GlassPanel>> GetAllGlassPanelsAsync();
+    Task AddGlassPanelAsync(GlassPanel glassPanel);
     Task<GlassPanel> GetGlassPanelByIdAsync(int id);
 }

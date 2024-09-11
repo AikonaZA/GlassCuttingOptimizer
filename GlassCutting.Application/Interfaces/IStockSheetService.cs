@@ -1,10 +1,10 @@
 ﻿using GlassCutting.Core.Entities;
 
-namespace GlassCutting.Core.Interfaces;
+namespace GlassCutting.Application.Interfaces;
 
-public interface IStockSheetRepository
+public interface IStockSheetService
 {
-    Task AddStockSheetAsync(StockSheet stockSheet);
     Task<IEnumerable<StockSheet>> GetAllStockSheetsAsync();
+    Task AddStockSheetAsync(StockSheet stockSheet);
     Task<StockSheet> GetStockSheetByIdAsync(int id);
 }
