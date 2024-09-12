@@ -113,7 +113,7 @@ public class GeneticCuttingStrategy : ICuttingStrategy
     {
         // Randomly alter the layout (e.g., move a panel or replace one)
         var random = new Random();
-        if (layout.CutPositions.Any())
+        if (layout.CutPositions.Count != 0)
         {
             var position = layout.CutPositions[random.Next(layout.CutPositions.Count)];
             position.X += random.Next(-10, 10); // Random adjustment to position

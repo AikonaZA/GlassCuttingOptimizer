@@ -12,7 +12,6 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 
 builder.Services.AddApplicationLayer();
 builder.Services.AddInfrastructureLayer(connectionString);
-
 builder.Services.AddProblemDetails();
 
 builder.Services.AddControllers();

@@ -6,8 +6,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlassCuttingOptimizer.AppHo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlassCuttingOptimizer.ServiceDefaults", "GlassCuttingOptimizer.ServiceDefaults\GlassCuttingOptimizer.ServiceDefaults.csproj", "{4F0EF1DE-1521-4734-836E-899034FF9C42}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlassCuttingOptimizer.ApiService", "GlassCuttingOptimizer.ApiService\GlassCuttingOptimizer.ApiService.csproj", "{069146B3-3A69-47E7-B4A9-FA84100E606A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlassCuttingOptimizer.Web", "GlassCuttingOptimizer.Web\GlassCuttingOptimizer.Web.csproj", "{CF441E55-3C6B-4256-82D6-840F61758D47}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlassCuttingOptimizer.Tests", "GlassCuttingOptimizer.Tests\GlassCuttingOptimizer.Tests.csproj", "{FA94F6EB-81CD-4EF3-94AF-71455C275005}"
@@ -44,10 +42,6 @@ Global
 		{4F0EF1DE-1521-4734-836E-899034FF9C42}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F0EF1DE-1521-4734-836E-899034FF9C42}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F0EF1DE-1521-4734-836E-899034FF9C42}.Release|Any CPU.Build.0 = Release|Any CPU
-		{069146B3-3A69-47E7-B4A9-FA84100E606A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{069146B3-3A69-47E7-B4A9-FA84100E606A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{069146B3-3A69-47E7-B4A9-FA84100E606A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{069146B3-3A69-47E7-B4A9-FA84100E606A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CF441E55-3C6B-4256-82D6-840F61758D47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CF441E55-3C6B-4256-82D6-840F61758D47}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF441E55-3C6B-4256-82D6-840F61758D47}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -78,7 +72,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{4F0EF1DE-1521-4734-836E-899034FF9C42} = {02C41A96-53B3-40D5-AE83-3BFE4F2AF0D2}
-		{069146B3-3A69-47E7-B4A9-FA84100E606A} = {EBB4DFC7-CE20-4157-81B6-50E59FD63C20}
 		{CF441E55-3C6B-4256-82D6-840F61758D47} = {D450B8FD-4121-4399-9B89-5533C1DFC233}
 		{091B6422-2DD3-45B1-AAEE-7E14826F7092} = {02C41A96-53B3-40D5-AE83-3BFE4F2AF0D2}
 		{8F309029-E15C-4682-BA6B-2CB180B82097} = {3D366999-E02E-472B-A6D4-F6CBFF4B995E}

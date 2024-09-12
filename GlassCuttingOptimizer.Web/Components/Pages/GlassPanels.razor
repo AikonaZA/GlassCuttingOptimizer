@@ -1,0 +1,69 @@
+﻿@page "/glass-panels"
+@inject GlassPanelService ApiService
+
+<div class="container mt-4">
+    <h3 class="text-primary">Manage Glass Panels</h3>
+
+    <div class="card p-3 mb-4 shadow-sm">
+        <!-- Form inputs using Blazor components, submission handled with @onclick -->
+        <div class="row mb-3">
+            <div class="col">
+                <label>Width:</label>
+                <InputNumber class="form-control" @bind-Value="newGlassPanel.Width" />
+            </div>
+            <div class="col">
+                <label>Height:</label>
+                <InputNumber class="form-control" @bind-Value="newGlassPanel.Height" />
+            </div>
+            <div class="col">
+                <label>Quantity:</label>
+                <InputNumber class="form-control" @bind-Value="newGlassPanel.Quantity" />
+            </div>
+        </div>
+        <button class="btn btn-success" @onclick="AddGlassPanel">Add Glass Panel</button>
+    </div>
+
+    <h4 class="text-secondary">Existing Glass Panels</h4>
+    <table class="table table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Width</th>
+                <th>Height</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var panel in glassPanels)
+            {
+                <tr>
+                    <td>@panel.Width</td>
+                    <td>@panel.Height</td>
+                    <td>@panel.Quantity</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@code {
+    private GlassPanel newGlassPanel = new GlassPanel();
+    private List<GlassPanel> glassPanels = new List<GlassPanel>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadGlassPanels();
+    }
+
+    private async Task LoadGlassPanels()
+    {
+        glassPanels = await ApiService.GetAllGlassPanelsAsync();
+    }
+
+    private async Task AddGlassPanel()
+    {
+        // This method handles the POST request when button is clicked
+        await ApiService.AddGlassPanelAsync(newGlassPanel);
+        newGlassPanel = new GlassPanel(); // Reset the input model
+        await LoadGlassPanels(); // Refresh the data on the UI
+    }
+}

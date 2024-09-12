@@ -1,0 +1,35 @@
+﻿@page "/optimization"
+@inject OptimizationService ApiService
+
+<div class="container mt-4">
+    <h3 class="text-primary">Run Cutting Optimization</h3>
+
+    <button class="btn btn-primary mb-4" @onclick="RunOptimization">Optimize Cutting</button>
+
+    @if (optimizationResult != null)
+    {
+        <h4 class="text-secondary">Optimization Result</h4>
+        <p class="text-success">Waste Percentage: @optimizationResult.WastePercentage%</p>
+
+        <div class="border p-3" style="overflow-x: auto;">
+            <svg width="1000" height="600" style="border: 1px solid black;">
+                @foreach (var position in optimizationResult.CutPositions)
+                {
+                    <rect x="@position.X" y="@position.Y" 
+                          width="@position.Width" height="@position.Height" 
+                          fill="rgba(0, 123, 255, 0.5)" stroke="black" />
+                    @: <text x="@((position.X + 5).ToString())" y="@((position.Y + 15).ToString())"font-size="12" fill="black">W:@position.Width H:@position.Height</text>
+                }
+            </svg>
+        </div>
+    }
+</div>
+
+@code {
+    private CutLayout optimizationResult;
+
+    private async Task RunOptimization()
+    {
+        optimizationResult = await ApiService.OptimizeCuttingAsync();
+    }
+}

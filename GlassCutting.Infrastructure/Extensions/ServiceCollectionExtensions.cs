@@ -22,6 +22,7 @@ public static class ServiceCollectionExtensions
         // Register repositories and other related services
         services.AddScoped<IStockSheetRepository, StockSheetRepository>();
         services.AddScoped<IGlassPanelRepository, GlassPanelRepository>();
+        services.AddScoped<IDatabaseRepository, DatabaseRepository>();
 
         return services;
     }

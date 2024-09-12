@@ -1,0 +1,72 @@
+﻿@page "/stock-sheets"
+@inject StockSheetService ApiService
+
+<div class="container mt-4">
+    <h3 class="text-primary">Manage Stock Sheets</h3>
+
+    <div class="card p-3 mb-4 shadow-sm">
+        <EditForm Model="@newStockSheet">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+
+            <div class="row mb-3">
+                <div class="col">
+                    <label>Width:</label>
+                    <InputNumber class="form-control" @bind-Value="newStockSheet.Width" />
+                </div>
+                <div class="col">
+                    <label>Height:</label>
+                    <InputNumber class="form-control" @bind-Value="newStockSheet.Height" />
+                </div>
+                <div class="col">
+                    <label>Quantity:</label>
+                    <InputNumber class="form-control" @bind-Value="newStockSheet.Quantity" />
+                </div>
+            </div>
+            <button class="btn btn-success" @onclick="AddStockSheet">Add Stock Sheet</button>
+        </EditForm>
+    </div>
+
+    <h4 class="text-secondary">Existing Stock Sheets</h4>
+    <table class="table table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Width</th>
+                <th>Height</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var sheet in stockSheets)
+            {
+                <tr>
+                    <td>@sheet.Width</td>
+                    <td>@sheet.Height</td>
+                    <td>@sheet.Quantity</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@code {
+    private StockSheet newStockSheet = new StockSheet();
+    private List<StockSheet> stockSheets = new List<StockSheet>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadStockSheets();
+    }
+
+    private async Task LoadStockSheets()
+    {
+        stockSheets = await ApiService.GetAllStockSheetsAsync();
+    }
+
+    private async Task AddStockSheet()
+    {
+        await ApiService.AddStockSheetAsync(newStockSheet);
+        newStockSheet = new StockSheet();
+        await LoadStockSheets();
+    }
+}

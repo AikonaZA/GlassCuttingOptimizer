@@ -1,0 +1,29 @@
+﻿@page "/database-management"
+@inject DatabaseService ApiService
+
+<div class="container mt-4">
+    <h3 class="text-primary">Database Management</h3>
+
+    <div class="card p-3 mb-4 shadow-sm">
+        <button class="btn btn-warning me-2" @onclick="ClearDatabase">Clear Database</button>
+        <button class="btn btn-danger" @onclick="ResetDatabase">Reset Database</button>
+    </div>
+
+    <p class="text-success">@statusMessage</p>
+</div>
+
+@code {
+    private string statusMessage = string.Empty;
+
+    private async Task ClearDatabase()
+    {
+        await ApiService.ClearDatabaseAsync();
+        statusMessage = "Database cleared successfully.";
+    }
+
+    private async Task ResetDatabase()
+    {
+        await ApiService.ResetDatabaseAsync();
+        statusMessage = "Database reset successfully.";
+    }
+}
